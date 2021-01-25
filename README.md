@@ -1,1 +1,2 @@
-![userStory2](C:\Users\kweck\Desktop\horror\IMG\screen.png)![screen](IMG\userStory1.png)
+![Concept](https://github.com/kweckolukasz/Filmweb-like_microservices/blob/master/IMG/screen.png?raw=true)
+![user story](https://github.com/kweckolukasz/Filmweb-like_microservices/blob/master/IMG/userStory1.png?raw=true)
