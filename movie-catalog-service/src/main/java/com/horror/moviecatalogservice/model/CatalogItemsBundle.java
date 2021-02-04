@@ -4,13 +4,13 @@ import java.util.List;
 
 public class CatalogItemsBundle {
 
-    List<CatalogItem> catalogItems;
+    private List<CatalogItemUserAndAvScores> catalogItems;
 
-    public List<CatalogItem> getCatalogItems() {
+    public List<CatalogItemUserAndAvScores> getCatalogItems() {
         return catalogItems;
     }
 
-    public void setCatalogItems(List<CatalogItem> catalogItems) {
+    public void setCatalogItems(List<CatalogItemUserAndAvScores> catalogItems) {
         this.catalogItems = catalogItems;
     }
 }

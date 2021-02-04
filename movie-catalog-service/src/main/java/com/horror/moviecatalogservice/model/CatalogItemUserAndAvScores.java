@@ -1,21 +1,25 @@
 package com.horror.moviecatalogservice.model;
 
-public class CatalogItem {
+public class CatalogItemUserAndAvScores {
 
-    public CatalogItem(String title, String description, int avScariness) {
+    public CatalogItemUserAndAvScores(String title, String description, int avScariness) {
         this.title = title;
         this.description = description;
         this.avScariness = avScariness;
     }
 
-    public CatalogItem() {
+    public CatalogItemUserAndAvScores() {
     }
 
     private String title;
     private String description;
+    private int usScariness;
     private int avScariness;
+    private int usBloodRating;
     private int avBloodRating;
+    private int usGhostRating;
     private int avGhostRating;
+    private int usPossessionRating;
     private int avPossessionRating;
 
     public String getTitle() {
@@ -68,5 +72,41 @@ public class CatalogItem {
 
     public void setAvPossessionRating(int avPossessionRating) {
         this.avPossessionRating = avPossessionRating;
+    }
+
+    public int getUsScariness() {
+        return usScariness;
+    }
+
+    public void setUsScariness(int usScariness) {
+        this.usScariness = usScariness;
+    }
+
+    public void setAvScariness(int avScariness) {
+        this.avScariness = avScariness;
+    }
+
+    public int getUsBloodRating() {
+        return usBloodRating;
+    }
+
+    public void setUsBloodRating(int usBloodRating) {
+        this.usBloodRating = usBloodRating;
+    }
+
+    public int getUsGhostRating() {
+        return usGhostRating;
+    }
+
+    public void setUsGhostRating(int usGhostRating) {
+        this.usGhostRating = usGhostRating;
+    }
+
+    public int getUsPossessionRating() {
+        return usPossessionRating;
+    }
+
+    public void setUsPossessionRating(int usPossessionRating) {
+        this.usPossessionRating = usPossessionRating;
     }
 }

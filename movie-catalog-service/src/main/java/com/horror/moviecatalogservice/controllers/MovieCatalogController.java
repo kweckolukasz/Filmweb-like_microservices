@@ -8,29 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/catalog")
-public class MovieCatalogResource {
+public class MovieCatalogController {
 
     @Autowired
     private RestTemplate restTemplate;
 
     @GetMapping("/{userId}")
-    public CatalogItemsBundle getCatalogForUserId(@PathVariable("userId") String userId){
+    public CatalogItemsBundle getAllMoviesWithAvScoresAndUserScores(@PathVariable("userId") String userId){
 
         //For this person
         //get all movieIds rated by this person -> rates
-        UserRatingsBundle bundle = restTemplate.getForObject("http://localhost:8083/ratings/"+userId, UserRatingsBundle.class);
+        UserRatingsBundle bundle = restTemplate.getForObject("http://ratings-data-service/ratings/users/"+userId, UserRatingsBundle.class);
         //When you have Id's get movie info
-        //TODO W tym wypadku MovieItem ma ocenę straszności wystawioną przez userId, sama klasa MovieItem jest przeznaczona do przechowywania średniej oceny wszystkich użytkowników, zastanów się jak zaimplementować mechanizm uśredniania ocen, gdzie ma być to pole?
-        List<CatalogItem> catalogItems = bundle.getRatings().stream().map(ratingItem -> {
-            MovieItem movieItem = restTemplate.getForObject("http://localhost:8082/movies/"+ratingItem.getMovieId(), MovieItem.class);
-            return new CatalogItem(movieItem.getTitle(), movieItem.getDescription(), movieItem.getAvScarinessScore());
+        //TODO It does not have userScores for now, implement this!
+        List<CatalogItemUserAndAvScores> catalogItems = bundle.getRatings().stream().map(ratingItem -> {
+            MovieItem movieItem = restTemplate.getForObject("http://movie-info-service/movies/"+ratingItem.getMovieId(), MovieItem.class);
+            return new CatalogItemUserAndAvScores(movieItem.getTitle(), movieItem.getDescription(), ratingItem.getScarinessScore());
         }).collect(Collectors.toList());
         CatalogItemsBundle catalogItemsBundle = new CatalogItemsBundle();
         catalogItemsBundle.setCatalogItems(catalogItems);
