@@ -2,12 +2,13 @@ package com.horror.movieinfoservice.data;
 
 import com.horror.movieinfoservice.model.MovieItem;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Service
 public class MovieService {
 
     private List<MovieItem> movies;

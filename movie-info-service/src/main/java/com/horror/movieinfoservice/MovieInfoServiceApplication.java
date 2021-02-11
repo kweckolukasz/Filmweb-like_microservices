@@ -18,10 +18,6 @@ public class MovieInfoServiceApplication {
 		return new RestTemplate();
 	}
 
-	@Bean
-	MovieService movieService(){
-		return new MovieService();
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MovieInfoServiceApplication.class, args);
