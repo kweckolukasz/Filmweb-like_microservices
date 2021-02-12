@@ -1,7 +1,10 @@
 package com.horror.movieinfoservice.controllers;
 
 import com.horror.movieinfoservice.data.MovieService;
+import com.horror.movieinfoservice.data.MovieServiceExternal;
 import com.horror.movieinfoservice.model.MovieItem;
+import com.horror.movieinfoservice.model.MovieSummary;
+import com.horror.movieinfoservice.model.MovieSummaryBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +24,27 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private MovieServiceExternal movieServiceExternal;
+
     @GetMapping
     public List<MovieItem> getAllMovies(){
         return movieService.getMovies();
     }
 
-    @GetMapping("/{movieId}")
+    @GetMapping("/movie/{movieId}")
     public MovieItem getMovieById(@PathVariable("movieId") String movieId){
         return movieService.getMovieItemById(movieId);
+    }
+
+
+    @GetMapping("/tmdb")
+    public MovieSummary getMovieTMDB(){
+        return movieServiceExternal.getMovieTMDB();
+    }
+
+    @GetMapping("/tmdball")
+    public MovieSummaryBundle getMoviesTMDB(){
+        return movieServiceExternal.getMoviesTMDB();
     }
 }

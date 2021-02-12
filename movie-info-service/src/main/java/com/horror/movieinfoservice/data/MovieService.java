@@ -1,9 +1,14 @@
 package com.horror.movieinfoservice.data;
 
 import com.horror.movieinfoservice.model.MovieItem;
+import com.horror.movieinfoservice.model.MovieSummary;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +17,9 @@ import java.util.List;
 public class MovieService {
 
     private List<MovieItem> movies;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     public MovieService() {
         movies = new ArrayList<>();
@@ -37,4 +45,6 @@ public class MovieService {
                 .findFirst()
                 .get();
     }
+
+
 }
